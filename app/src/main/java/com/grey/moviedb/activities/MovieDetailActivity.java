@@ -10,7 +10,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.grey.moviedb.R;
 
-public class MovieDetailActivity extends AppCompatActivity {
+import java.util.List;
+
+public class MovieDetailActivity extends DataHoldingActivity {
     ImageView imgView;
     TextView titleTV, yearTV, overviewTV, ratingTV;
 
@@ -20,10 +22,10 @@ public class MovieDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
 
         initViews();
-        populateViews();
+        prepareData();
     }
 
-    private void initViews() {
+    protected void initViews() {
         imgView = findViewById(R.id.movie_poster_img);
         titleTV = findViewById(R.id.movie_title_tv);
         yearTV = findViewById(R.id.date_tv);
@@ -31,7 +33,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         ratingTV = findViewById(R.id.rating_tv);
     }
 
-    private void populateViews() {
+    protected void prepareData() {
         Intent i = getIntent();
         titleTV.setText(i.getStringExtra("title"));
         yearTV.setText(i.getStringExtra("year"));

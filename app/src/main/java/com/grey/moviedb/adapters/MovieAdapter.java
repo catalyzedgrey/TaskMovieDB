@@ -12,7 +12,7 @@ import com.grey.moviedb.models.Movie;
 
 import java.util.List;
 
-public class MovieAdapter extends BaseAdapter {
+public class MovieAdapter extends BaseListAdapter {
 
     private LayoutInflater layoutinflater;
     private List<Movie> movieList;
