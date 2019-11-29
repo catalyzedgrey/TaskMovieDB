@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.OnlineDataHoldingActivity"></activity>
+        <activity android:name=".MovieGrid.MovieGridActivity"></activity>
+        <activity android:name=".activities.OnlineDataHoldingActivity" />
         <activity android:name=".activities.DataHoldingActivity" />
         <activity android:name=".activities.MovieDetailActivity" />
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

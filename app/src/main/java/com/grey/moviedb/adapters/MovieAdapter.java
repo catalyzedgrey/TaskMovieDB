@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 
 import com.grey.moviedb.R;
 import com.grey.moviedb.itemviews.MovieItemView;
+import com.grey.moviedb.main.MainActivity;
 import com.grey.moviedb.models.Movie;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class MovieAdapter extends BaseListAdapter {
     private List<Movie> movieList;
     private Context context;
 
-    public MovieAdapter(Context context, List<Movie> customizedListView) {
+    public MovieAdapter(Context context, List<Movie> customizedListView, MainActivity.MovieItemListener mItemListener) {
         this.context = context;
         movieList = customizedListView;
     }

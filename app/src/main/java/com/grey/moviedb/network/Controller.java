@@ -2,8 +2,6 @@ package com.grey.moviedb.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.grey.moviedb.activities.MainActivity;
-import com.grey.moviedb.adapters.MovieAdapter;
 import com.grey.moviedb.interfaces.IService;
 import com.grey.moviedb.models.Result;
 import com.grey.moviedb.utils.Constants;
