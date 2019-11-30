@@ -11,13 +11,14 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.grey.moviedb.R;
 import com.grey.moviedb.data.network.model.Movie;
+import com.grey.moviedb.data.network.model.MovieAPI;
 
 import java.util.List;
 
 import retrofit2.Callback;
 
 public class MovieAdapter extends BaseAdapter {
-    public static final String IMG_URL = "https://image.tmdb.org/t/p/w500/";
+
     private List<Movie> mMovieList;
 
     public MovieAdapter(List<Movie> movieList) {
@@ -41,25 +42,39 @@ public class MovieAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if (view == null) {
+        ViewHolder viewHolder = null;
+
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            view = inflater.inflate(R.layout.item_movie, parent, false);
+            convertView = inflater.inflate(R.layout.item_movie, parent, false);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.movie_poster_img);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.movie_title_tv);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        final Movie movie = mMovieList.get(position);
+        Movie movie = mMovieList.get(position);
 
-        TextView title = view.findViewById(R.id.movie_title_tv);
-        title.setText(movie.getTitle());
-        ImageView poster = view.findViewById(R.id.movie_poster_img);
-        String imgURL = IMG_URL + movie.getImgPath();
-        Glide.with(view.getContext()).load(imgURL).into(poster);
+        if (movie != null) {
+            viewHolder.title.setText(movie.getTitle());
 
-        return view;
+            String imgURL = MovieAPI.IMG_URL + movie.getImgPath();
+            Glide.with(convertView.getContext()).load(imgURL).into(viewHolder.image);
+        }
+
+        return convertView;
     }
 
-    public void refreshAdapter(List<Movie> movieList){
+    public void refreshAdapter(List<Movie> movieList) {
         mMovieList = movieList;
         notifyDataSetChanged();
+    }
+
+    private static class ViewHolder {
+        public ImageView image;
+        public TextView title;
     }
 
 }

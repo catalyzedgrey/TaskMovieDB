@@ -23,13 +23,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void onViewInitialized() {
-        //getMvpView().showLoading();
-        try {
-            getDataManager().doMovieSearch().enqueue(this);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
+        getMvpView().showLoading();
+        getDataManager().doMovieSearch().enqueue(this);
     }
 
     @Override

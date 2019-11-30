@@ -7,8 +7,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface MovieAPI {
-    public static final String IMG_URL = "https://image.tmdb.org/t/p/w500/";
-    public static final String popularitySort = BuildConfig.BASE_URL + "popularity.desc";
+    public final String IMG_URL = "https://image.tmdb.org/t/p/w500/";
+    public final String popularitySort =  "popularity.desc";
 
     @GET("3/discover/movie?")
     Call<Result> getMovies(
